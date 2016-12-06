@@ -1,22 +1,23 @@
-var imports = require("./../../server.js");
-console.log(imports);
-
 $("#viewTables").on("click",function(){
 	$.get("/tables", function(data){
 	}).done(function(){
-		console.log("in here.");
-		for (var i = 0; i < imports.table.length; i++){
-			//show the divs for each table reservation
-			$("#tableArea").append("<div id = 'table" +imports.table[i]+"'></div>");
-			$("#table"+imports.table[i]).append("<h2>"+(i+1)+" | " + imports.table[i].customerID);
-		}
-		for (var i = 0; i < imports.waitlist.length; i++){
-			//show the divs for each table reservation
-			$("#waitlistArea").append("<div id = 'wait" +imports.waitlist[i]+"'></div>");
-			$("#wait"+imports.waitlist[i]).append("<h2>"+(i+1)+" | " + imports.waitlist[i].customerID);
-		}
-	}
-	)
+		$.get("/api/table", function(dataTwo){
+			for (var i = 0; i < dataTwo.length; i++){
+				//show the divs for each table reservation
+				$("#tableArea").append("<div id = 'table" +dataTwo[i]+"'></div>");
+				$("#table"+dataTwo[i]).append("<h2>"+(i+1)+" | " + dataTwo[i].customerID);
+			}
+		});
+
+		$.get("/api/waitlist", function(imports){
+			for (var i = 0; i < imports.length; i++){
+				//show the divs for each table reservation
+				$("#waitlistArea").append("<div id = 'wait" +imports[i]+"'></div>");
+				$("#wait"+imports[i]).append("<h2>"+(i+1)+" | " + imports[i].customerID);
+			}
+		})	;	
+
+	})
 });
 $("#addCustomer").on("click", function() {
   var newCustomer = {
@@ -43,3 +44,4 @@ $("#home").on("click",function(){
 
 	});
 });
+
