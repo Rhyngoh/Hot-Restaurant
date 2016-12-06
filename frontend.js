@@ -1,6 +1,6 @@
 $("#viewTables").on("click",function(){
 	$.get("/tables", function(data){
-
+		console.log(data);
 	});
 });
 
@@ -14,5 +14,5 @@ $("#makeReservation").on("click",function(){
 $("#home").on("click",function(){
 	$.get("/", function(data){
 
-	})
-})
+	});
+});
