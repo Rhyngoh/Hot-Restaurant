@@ -2,8 +2,8 @@ var imports = require("./server.js");
 
 $("#viewTables").on("click",function(){
 	$.get("/tables", function(data){
-		console.log(data);
 	}).done(function(){
+		console.log("in here.");
 		for (var i = 0; i < imports.table.length; i++){
 			//show the divs for each table reservation
 			$("#tableArea").append("<div id = 'table" +imports.table[i]+"'></div>");
