@@ -15,9 +15,79 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+var table = [
+{
+	customerName: "Steve",
+	phoneNumber: "911",
+	customerEmail: "steveChronMan@gmail.com",
+	customerID: "Steve The Boss"
+}];
+var waitlist = [];
+var 
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
 
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+// Search for Specific table (or all tables) - provides JSON
+app.get("/api/tables", function(req, res) {
+  var aTable = req.params.table;
+
+  if (aTable) {
+    console.log(aTable);
+
+    for (var i = 0; i < table.length; i++) {
+      if (aTable === table[i].routeName) {
+        res.json(table[i]);
+        return;
+      }
+    }
+
+    res.json(false);
+  }
+  else {
+    res.json(table);
+  }
+});
+app.get("/api/waitlist", function(req, res) {
+  var aWaitlist = req.params.waitlist;
+
+  if (aWaitlist) {
+    console.log(aWaitlist);
+
+    for (var i = 0; i < waitlist.length; i++) {
+      if (aWaitlist === waitlist[i].routeName) {
+        res.json(waitlist[i]);
+        return;
+      }
+    }
+
+    res.json(false);
+  }
+  else {
+    res.json(waitlist);
+  }
+});
+app.post("/api/reserve", function(req, res) {
+  var newCustomer = req.body;
+  newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newCustomer);
+
+  characters.push(newCustomer);
+
+  res.json(newCustomer);
+});
