@@ -43,7 +43,8 @@ app.get("/tables", function(req, res) {
 });
 
 // Search for Specific table (or all tables) - provides JSON
-app.get("/tables", function(){
+app.get("/api/tables", function(req, res){
+
     for(i in table){
         res.json(table[i]);
     }
@@ -89,3 +90,5 @@ app.post("/api/reserve", function(req, res) {
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
+
+module.exports = {table, waitlist};
