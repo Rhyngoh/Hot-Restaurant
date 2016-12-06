@@ -85,9 +85,12 @@ app.post("/api/reserve", function(req, res) {
   newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newCustomer);
-
-  characters.push(newCustomer);
-
+  if(table.length = 5){
+  	wishlist.push(newCustomer);
+  } else{
+  	table.push(newCustomer);
+  }
+ 
   res.json(newCustomer);
 });
 
