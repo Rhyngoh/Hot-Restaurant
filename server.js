@@ -40,7 +40,6 @@ app.get("/reserve", function(req, res) {
 
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
-<<<<<<< HEAD
 });
 
 // Search for Specific table (or all tables) - provides JSON
@@ -49,28 +48,11 @@ app.get("/api/tables", function(req, res){
     for(i in table){
         res.json(table[i]);
     }
-    for(i in waitlist){
-        res.json(waitlist[i]);
-    }
 });
 app.get("/api/waitlist", function(req, res) {
-  var aWaitlist = req.params.waitlist;
-
-  if (aWaitlist) {
-    console.log(aWaitlist);
-
-    for (var i = 0; i < waitlist.length; i++) {
-      if (aWaitlist === waitlist[i].routeName) {
+  for(i in waitlist){
         res.json(waitlist[i]);
-        return;
-      }
     }
-
-    res.json(false);
-  }
-  else {
-    res.json(waitlist);
-  }
 });
 app.post("/api/reserve", function(req, res) {
   var newCustomer = req.body;
