@@ -1,6 +1,9 @@
-$("#viewTables").on("click",function(){
+$(document).on("click","#viewTables",function(){
+	console.log("clicked view tables");
 	$.get("/tables", function(data){
 	}).done(function(){
+		console.log("inside here");
+		console.log(data);
 		$.get("/api/table", function(dataTwo){
 			for (var i = 0; i < dataTwo.length; i++){
 				//show the divs for each table reservation
@@ -19,7 +22,7 @@ $("#viewTables").on("click",function(){
 
 	})
 });
-$("#addCustomer").on("click", function() {
+$(document).on("click","#addCustomer", function() {
   var newCustomer = {
     customerName: $("#reserve_name").val().trim(),
     phoneNumber: $("#reserve_phone").val().trim(),
@@ -33,13 +36,13 @@ $("#addCustomer").on("click", function() {
     alert("Adding customer...");
   });
 });
-$("#makeReservation").on("click",function(){
+$(document).on("click","#makeReservation",function(){
 	$.get("/reserve", function(data){
 
 	});
 });
 
-$("#home").on("click",function(){
+$(document).on("click","#home",function(){
 	$.get("/", function(data){
 
 	});
