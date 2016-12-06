@@ -78,6 +78,10 @@
 				$("#wait"+i).append("<h2>"+(i+1)+" | " + imports[i].customerID);
 			}
 		});	
+		$("#clear").on("click", function(){
+			$.delete("/api/", function(){});
+			console.log("Database emptied.");
+		})
 	</script>
 </body>
 
