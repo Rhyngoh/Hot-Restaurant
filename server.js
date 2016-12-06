@@ -43,7 +43,7 @@ app.get("/tables", function(req, res) {
 });
 
 // Search for Specific table (or all tables) - provides JSON
-app.get("/tables", function()){
+app.get("/tables", function(){
     for(i in table){
         res.json(table[i]);
     }
