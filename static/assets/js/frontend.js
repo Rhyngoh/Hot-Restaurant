@@ -1,4 +1,4 @@
-var imports = require("../../../server.js");
+var imports = require("./../../server.js");
 console.log(imports);
 
 $("#viewTables").on("click",function(){
