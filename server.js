@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+//============================================================
 var table = [
 {
 	customerName: "Steve",
@@ -42,24 +43,13 @@ app.get("/tables", function(req, res) {
 });
 
 // Search for Specific table (or all tables) - provides JSON
-app.get("/api/tables", function(req, res) {
-  var aTable = req.params.table;
-
-  if (aTable) {
-    console.log(aTable);
-
-    for (var i = 0; i < table.length; i++) {
-      if (aTable === table[i].routeName) {
+app.get("/tables", function()){
+    for(i in table){
         res.json(table[i]);
-        return;
-      }
     }
-
-    res.json(false);
-  }
-  else {
-    res.json(table);
-  }
+    for(i in waitlist){
+        res.json(waitlist[i]);
+    }
 });
 app.get("/api/waitlist", function(req, res) {
   var aWaitlist = req.params.waitlist;
