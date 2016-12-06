@@ -17,7 +17,19 @@ $("#viewTables").on("click",function(){
 	}
 	)
 });
+$("#addCustomer").on("click", function() {
+  var newCustomer = {
+    customerName: $("#reserve_name").val().trim(),
+    phoneNumber: $("#reserve_phone").val().trim(),
+    customerEmail: $("#reserve_email").val().trim(),
+    customerID: $("#reserve_uniqueID").val().trim()
+  };
 
+  $.post("http://localhost:3000/api/reserve", newCustomer)
+  .done(function(data) {
+    console.log(data);
+    alert("Adding customer...");
+  });
  	
 $("#makeReservation").on("click",function(){
 	$.get("/reserve", function(data){
