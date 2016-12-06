@@ -84,7 +84,8 @@
 	</div>
 
 	<script type="text/javascript">
-	$("#addCustomer").on("click", function() {
+	$("#addCustomer").on("click", function(e) {
+		e.preventDefault();
 		console.log("Clicked add sutomsgiasdf");
 	  var newCustomer = {
 	    customerName: $("#reserve_name").val().trim(),
@@ -96,7 +97,7 @@
 	  $.post("api/reserve", newCustomer)
 	  .done(function(data) {
 	    //console.log(data);
-	    
+
 	    alert("Adding customer...");
 	  });
 	});

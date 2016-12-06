@@ -1,4 +1,4 @@
-$(document).on("click","#viewTables",function(){
+/*$(document).on("click","#viewTables",function(){
 	console.log("clicked view tables");
 	$.get("/tables", function(data){
 	}).done(function(){
@@ -35,7 +35,7 @@ $(document).on("click","#addCustomer", function() {
     console.log(data);
     alert("Adding customer...");
   });
-});
+});*/
 $(document).on("click","#makeReservation",function(){
 	$.get("/reserve", function(data){
 

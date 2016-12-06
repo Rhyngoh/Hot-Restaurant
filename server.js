@@ -47,7 +47,6 @@ app.get("/api/", function(req, res){
 });
 // Search for Specific table (or all tables) - provides JSON
 app.get("/api/tables", function(req, res){
-
     res.json(table);
 });
 app.get("/api/waitlist", function(req, res) {
@@ -58,12 +57,11 @@ app.post("/api/reserve", function(req, res) {
   //newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
 
   console.log("In the server file" + newCustomer);
-  if(table.length = 5){
+  if(table.length >= 5){
   	waitlist.push(newCustomer);
   } else{
   	table.push(newCustomer);
   }
-  console.log(table);
   res.json(newCustomer);
 });
 
