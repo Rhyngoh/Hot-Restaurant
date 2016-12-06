@@ -41,18 +41,17 @@ app.get("/reserve", function(req, res) {
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
-
+app.get("/api/", function(req, res){
+  //combining arrays together
+    res.json(table.concat(waitlist));
+});
 // Search for Specific table (or all tables) - provides JSON
 app.get("/api/tables", function(req, res){
 
-    for(i in table){
-        res.json(table[i]);
-    }
+    res.json(table);
 });
 app.get("/api/waitlist", function(req, res) {
-  for(i in waitlist){
-        res.json(waitlist[i]);
-    }
+    res.json(waitlist);
 });
 app.post("/api/reserve", function(req, res) {
   var newCustomer = req.body;
