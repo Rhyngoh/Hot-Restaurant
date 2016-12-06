@@ -54,9 +54,6 @@ app.get("/api/waitlist", function(req, res) {
 });
 app.post("/api/reserve", function(req, res) {
   var newCustomer = req.body;
-  //newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
-
-  console.log("In the server file" + newCustomer);
   if(table.length >= 5){
   	waitlist.push(newCustomer);
   } else{
@@ -64,7 +61,10 @@ app.post("/api/reserve", function(req, res) {
   }
   res.json(newCustomer);
 });
-
+app.delete("/api/", function(req, res){
+  table = [];
+  waitlist = [];
+});
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {

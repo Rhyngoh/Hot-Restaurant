@@ -72,7 +72,6 @@
 		});
 
 		$.get("/api/waitlist", function(imports){
-			console.log(imports);
 			for (var i = 0; i < imports.length; i++){
 				//show the divs for each table reservation
 				$("#waitlistSection").append("<div id = 'wait" +i+"'></div>");
