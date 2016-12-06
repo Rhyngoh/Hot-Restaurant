@@ -41,7 +41,7 @@
 					</div>
 					<div class="panel-body">
 
-						<form role="form" action="reserve" method="POST">
+						<form role="form" action="api/reserve" method="POST">
 							<!-- Input Name -->
 							<div class="form-group">
 								<label for="">Name</label>
@@ -83,7 +83,24 @@
 
 	</div>
 
-	<script type="text/javascript" src="assets/js/frontend.js"></script>
+	<script type="text/javascript">
+	$("#addCustomer").on("click", function() {
+		console.log("Clicked add sutomsgiasdf");
+	  var newCustomer = {
+	    customerName: $("#reserve_name").val().trim(),
+	    phoneNumber: $("#reserve_phone").val().trim(),
+	    customerEmail: $("#reserve_email").val().trim(),
+	    customerID: $("#reserve_uniqueID").val().trim()
+	  };
+	  console.log(newCustomer);
+	  $.post("api/reserve", newCustomer)
+	  .done(function(data) {
+	    //console.log(data);
+	    
+	    alert("Adding customer...");
+	  });
+	});
+	</script>
 
 </body>
 </html>

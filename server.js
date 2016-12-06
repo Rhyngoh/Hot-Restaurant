@@ -55,15 +55,15 @@ app.get("/api/waitlist", function(req, res) {
 });
 app.post("/api/reserve", function(req, res) {
   var newCustomer = req.body;
-  newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
+  //newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newCustomer);
+  console.log("In the server file" + newCustomer);
   if(table.length = 5){
-  	wishlist.push(newCustomer);
+  	waitlist.push(newCustomer);
   } else{
   	table.push(newCustomer);
   }
- 
+  console.log(table);
   res.json(newCustomer);
 });
 
