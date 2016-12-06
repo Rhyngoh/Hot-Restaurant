@@ -40,17 +40,15 @@ app.get("/reserve", function(req, res) {
 
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
-});
-
-// Search for Specific table (or all tables) - provides JSON
-app.get("/tables", function(){
-    for(i in table){
+   for(i in table){
         res.json(table[i]);
     }
     for(i in waitlist){
         res.json(waitlist[i]);
     }
 });
+
+
 app.get("/api/waitlist", function(req, res) {
   var aWaitlist = req.params.waitlist;
 
