@@ -22,13 +22,12 @@ var table = [
 	customerEmail: "steveChronMan@gmail.com",
 	customerID: "Steve The Boss"
 }];
-var waitlist = [];
-var 
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
-});
+var waitlist = [{
+	customerName: "June",
+	phoneNumber: "8324801234",
+	customerEmail: "TheDudeJune@gmail.com",
+	customerID: "The Dude June"
+}];
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -90,4 +89,10 @@ app.post("/api/reserve", function(req, res) {
   characters.push(newCustomer);
 
   res.json(newCustomer);
+});
+
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
 });
