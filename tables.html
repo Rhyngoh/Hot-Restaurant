@@ -61,7 +61,25 @@
 	    </footer>
 
 	</div>
-	<script type="text/javascript" src="assets/js/frontend.js"></script>
+	<script type="text/javascript">
+		$.get("/api/tables", function(dataTwo){
+			for (var i = 0; i < dataTwo.length; i++){
+				console.log(dataTwo);
+				//show the divs for each table reservation
+				$("#tableArea").append("<div id = 'table" +i+"'></div>");
+				$("#table"+i).append("<h2>"+(i+1)+" | " + dataTwo[i].customerID);
+			}
+		});
+
+		$.get("/api/waitlist", function(imports){
+			console.log(imports);
+			for (var i = 0; i < imports.length; i++){
+				//show the divs for each table reservation
+				$("#waitlistSection").append("<div id = 'wait" +i+"'></div>");
+				$("#wait"+i).append("<h2>"+(i+1)+" | " + imports[i].customerID);
+			}
+		})	;	
+	</script>
 </body>
 
 
