@@ -18,9 +18,9 @@ $(document).on("click","#viewTables",function(){
 				$("#waitlistArea").append("<div id = 'wait" +imports[i]+"'></div>");
 				$("#wait"+imports[i]).append("<h2>"+(i+1)+" | " + imports[i].customerID);
 			}
-		})	;	
+		});	
 
-	})
+	});
 });
 $(document).on("click","#addCustomer", function() {
   var newCustomer = {
