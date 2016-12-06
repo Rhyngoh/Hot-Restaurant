@@ -1,4 +1,4 @@
-var imports = require("./server.js");
+var imports = require("../../../server.js");
 console.log(imports);
 
 $("#viewTables").on("click",function(){
@@ -31,7 +31,7 @@ $("#addCustomer").on("click", function() {
     console.log(data);
     alert("Adding customer...");
   });
- 	
+});
 $("#makeReservation").on("click",function(){
 	$.get("/reserve", function(data){
 
