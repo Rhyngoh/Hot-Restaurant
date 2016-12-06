@@ -1,4 +1,5 @@
 var imports = require("./server.js");
+console.log(imports);
 
 $("#viewTables").on("click",function(){
 	$.get("/tables", function(data){
